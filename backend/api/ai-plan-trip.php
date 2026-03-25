@@ -1,8 +1,4 @@
 <?php
-// ============================================================
-// backend/api/ai-plan-trip.php
-// POST /backend/api/ai-plan-trip.php
-// ============================================================
 
 header('Content-Type: application/json; charset=utf-8');
 
