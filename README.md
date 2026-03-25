@@ -184,9 +184,9 @@ README.md
 
 ## 👨‍💻 Author
 
-Aadhil Nisar
-DiscoverLanka Project
-University Student Project
+**Aadhil Nisar**  
+Fullstack project for **DiscoverLanka**  
+University student project based on Sri Lanka travel discovery and trip planning.
 
 ---
 
