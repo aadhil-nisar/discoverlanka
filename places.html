@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiscoverLanka - Places</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/signin.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">Discover<span>Lanka</span></a>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+
+          <li class="dropdown">
+            <a href="places.html" class="active">Places <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="category.html?type=beaches">Beaches</a></li>
+              <li><a href="category.html?type=hill-country">Hill Country</a></li>
+              <li><a href="category.html?type=waterfalls">Waterfalls</a></li>
+              <li><a href="category.html?type=heritage-sites">Heritage Sites</a></li>
+              <li><a href="category.html?type=wildlife">Wildlife</a></li>
+            </ul>
+          </li>
+
+          <li><a href="itinerary-planner.html">Plan Trip</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="places-hero">
+    <div class="places-hero-overlay"></div>
+    <div class="container places-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <strong>Places</strong>
+      </div>
+
+      <h1>Explore Sri Lanka by Destination Type</h1>
+      <p>
+        From relaxing beaches and misty mountain towns to breathtaking waterfalls,
+        ancient cultural treasures, and unforgettable wildlife adventures, DiscoverLanka
+        helps you explore Sri Lanka through five carefully organized travel categories.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#categories" class="btn btn-dark">Explore Categories</a>
+        <a href="itinerary-planner.html" class="btn btn-outline">Plan My Trip</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section places-intro-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Discover Places That Match Your Travel Style</h2>
+        <p>
+          Whether you love coastal escapes, cool mountain landscapes, natural wonders,
+          cultural heritage, or wildlife safaris, choose a category below and start exploring.
+        </p>
+      </div>
+
+      <div class="places-intro-grid">
+        <div class="places-intro-card">
+          <div class="intro-mini-icon"><i class="fas fa-map-location-dot"></i></div>
+          <h3>Organized Categories</h3>
+          <p>
+            All destinations are grouped into clear travel categories so users can
+            find places faster and browse more easily.
+          </p>
+        </div>
+
+        <div class="places-intro-card">
+          <div class="intro-mini-icon"><i class="fas fa-filter"></i></div>
+          <h3>Easy Exploration</h3>
+          <p>
+            Each category page helps visitors explore detailed place cards with useful
+            travel notes, images, and district-based browsing.
+          </p>
+        </div>
+
+        <div class="places-intro-card">
+          <div class="intro-mini-icon"><i class="fas fa-route"></i></div>
+          <h3>Travel-Friendly Details</h3>
+          <p>
+            Visitors can compare places more easily with descriptions, highlights,
+            and approximate distance information.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section places-category-section" id="categories">
+    <div class="container">
+      <div class="section-title">
+        <h2>Five Main Categories</h2>
+        <p>
+          Explore Sri Lanka your way by selecting the kind of destinations you want to experience
+        </p>
+      </div>
+
+      <div class="places-category-grid">
+
+        <!-- Beaches -->
+        <div class="places-category-card">
+          <div class="places-card-image beaches-bg">
+            <div class="places-card-overlay"></div>
+            <div class="places-card-icon">
+              <i class="fas fa-umbrella-beach"></i>
+            </div>
+          </div>
+          <div class="places-card-content">
+            <h3>Beaches</h3>
+            <p class="places-card-tagline">
+              Pristine coastlines with golden sands and crystal-clear waters perfect for relaxation
+            </p>
+            <p>
+              Sri Lanka is surrounded by beautiful beaches that offer a wide variety of travel experiences.
+              Some beaches are perfect for swimming and relaxing, while others are famous for surfing,
+              whale watching, snorkeling, sunsets, seafood, and vibrant beachside stays.
+            </p>
+            <p>
+              Southern and western coastal destinations are popular for lively beach holidays, while eastern
+              beaches provide seasonal calm waters and more peaceful seaside escapes.
+            </p>
+
+            <div class="places-feature-list">
+              <span><i class="fas fa-check-circle"></i> Relaxing coastal towns</span>
+              <span><i class="fas fa-check-circle"></i> Surf and sunset spots</span>
+              <span><i class="fas fa-check-circle"></i> Whale watching areas</span>
+            </div>
+
+            <a href="category.html?type=beaches" class="btn btn-dark places-btn">Explore Beaches</a>
+          </div>
+        </div>
+
+        <!-- Hill Country -->
+        <div class="places-category-card">
+          <div class="places-card-image hill-bg">
+            <div class="places-card-overlay"></div>
+            <div class="places-card-icon">
+              <i class="fas fa-mountain"></i>
+            </div>
+          </div>
+          <div class="places-card-content">
+            <h3>Hill Country</h3>
+            <p class="places-card-tagline">
+              Lush tea plantations and misty mountains offering breathtaking scenic views
+            </p>
+            <p>
+              Sri Lanka’s hill country is one of the most scenic regions on the island, known for cool weather,
+              tea estates, winding roads, waterfalls, viewpoints, train journeys, forests, and peaceful mountain towns.
+            </p>
+            <p>
+              Destinations in this category are ideal for travelers who love fresh air, panoramic landscapes,
+              hiking, photography, and slower journeys through beautiful upland environments.
+            </p>
+
+            <div class="places-feature-list">
+              <span><i class="fas fa-check-circle"></i> Tea country landscapes</span>
+              <span><i class="fas fa-check-circle"></i> Cool weather escapes</span>
+              <span><i class="fas fa-check-circle"></i> Viewpoints and train routes</span>
+            </div>
+
+            <a href="category.html?type=hill-country" class="btn btn-dark places-btn">Explore Hill Country</a>
+          </div>
+        </div>
+
+        <!-- Waterfalls -->
+        <div class="places-category-card">
+          <div class="places-card-image waterfall-bg">
+            <div class="places-card-overlay"></div>
+            <div class="places-card-icon">
+              <i class="fas fa-water"></i>
+            </div>
+          </div>
+          <div class="places-card-content">
+            <h3>Waterfalls</h3>
+            <p class="places-card-tagline">
+              Magnificent cascades and hidden falls surrounded by forests, mountains, and scenic valleys
+            </p>
+            <p>
+              Sri Lanka has many spectacular waterfalls spread across the central highlands and nearby regions.
+              Some are easy roadside stops, while others are reached through walking paths, tea estates,
+              forest trails, and scenic mountain roads.
+            </p>
+            <p>
+              This category is perfect for travelers who enjoy natural beauty, photography, adventure,
+              and dramatic landscapes shaped by flowing water and rocky terrain.
+            </p>
+
+            <div class="places-feature-list">
+              <span><i class="fas fa-check-circle"></i> Mountain waterfalls</span>
+              <span><i class="fas fa-check-circle"></i> Scenic road trip stops</span>
+              <span><i class="fas fa-check-circle"></i> Nature photography spots</span>
+            </div>
+
+            <a href="category.html?type=waterfalls" class="btn btn-dark places-btn">Explore Waterfalls</a>
+          </div>
+        </div>
+
+        <!-- Heritage Sites -->
+        <div class="places-category-card">
+          <div class="places-card-image heritage-bg">
+            <div class="places-card-overlay"></div>
+            <div class="places-card-icon">
+              <i class="fas fa-landmark"></i>
+            </div>
+          </div>
+          <div class="places-card-content">
+            <h3>Heritage Sites</h3>
+            <p class="places-card-tagline">
+              Ancient temples and UNESCO World Heritage sites rich in cultural history
+            </p>
+            <p>
+              Sri Lanka’s heritage sites reflect a long and remarkable history shaped by ancient kingdoms,
+              religion, art, architecture, and cultural tradition. These destinations include sacred temples,
+              historic cities, rock fortresses, cave shrines, and colonial landmarks.
+            </p>
+            <p>
+              This category is ideal for travelers who want to explore the cultural depth of Sri Lanka
+              and experience places of historical, spiritual, and architectural importance.
+            </p>
+
+            <div class="places-feature-list">
+              <span><i class="fas fa-check-circle"></i> Sacred temples and shrines</span>
+              <span><i class="fas fa-check-circle"></i> Ancient cities and ruins</span>
+              <span><i class="fas fa-check-circle"></i> UNESCO heritage landmarks</span>
+            </div>
+
+            <a href="category.html?type=heritage-sites" class="btn btn-dark places-btn">Explore Heritage</a>
+          </div>
+        </div>
+
+        <!-- Wildlife -->
+        <div class="places-category-card">
+          <div class="places-card-image wildlife-bg">
+            <div class="places-card-overlay"></div>
+            <div class="places-card-icon">
+              <i class="fas fa-paw"></i>
+            </div>
+          </div>
+          <div class="places-card-content">
+            <h3>Wildlife</h3>
+            <p class="places-card-tagline">
+              National parks teeming with elephants, leopards, and exotic bird species
+            </p>
+            <p>
+              Sri Lanka is one of the best wildlife destinations in Asia, offering national parks,
+              forests, wetlands, safari zones, and biodiversity-rich habitats filled with fascinating species.
+              Travelers can experience elephants, leopards, birds, deer, crocodiles, and many more animals.
+            </p>
+            <p>
+              This category is best for nature lovers, safari travelers, birdwatchers, and anyone who wants
+              to experience the island’s wild side through protected natural environments.
+            </p>
+
+            <div class="places-feature-list">
+              <span><i class="fas fa-check-circle"></i> National park safaris</span>
+              <span><i class="fas fa-check-circle"></i> Elephant and leopard habitats</span>
+              <span><i class="fas fa-check-circle"></i> Birdlife and rainforest zones</span>
+            </div>
+
+            <a href="category.html?type=wildlife" class="btn btn-dark places-btn">Explore Wildlife</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose -->
+  <section class="section places-why-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Browse by Category?</h2>
+        <p>
+          A category-based experience helps users discover destinations more clearly and build better travel plans
+        </p>
+      </div>
+
+      <div class="places-why-grid">
+        <div class="places-why-card">
+          <div class="why-icon"><i class="fas fa-compass"></i></div>
+          <h3>Simple Navigation</h3>
+          <p>
+            Users can go directly to the type of places they love most without searching through everything at once.
+          </p>
+        </div>
+
+        <div class="places-why-card">
+          <div class="why-icon"><i class="fas fa-location-dot"></i></div>
+          <h3>Better Discovery</h3>
+          <p>
+            Categories make it easier to compare destinations and identify areas worth visiting around Sri Lanka.
+          </p>
+        </div>
+
+        <div class="places-why-card">
+          <div class="why-icon"><i class="fas fa-book-open"></i></div>
+          <h3>More Detailed Experience</h3>
+          <p>
+            Each category page can provide place descriptions, image-based browsing, district filters, and travel notes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container cta-content">
+      <h2>Start Exploring Sri Lanka Today</h2>
+      <p>
+        Choose a destination category, discover beautiful places, and continue building your perfect journey with DiscoverLanka.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="itinerary-planner.html" class="btn btn-light">Start Planning Now</a>
+        <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo footer-logo">
+          <a href="index.html">Discover<span>Lanka</span></a>
+        </div>
+        <p>Your trusted companion for exploring the wonders of Sri Lanka</p>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="places.html">Destinations</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="help.html">Help Center</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Subscribe to get travel tips and exclusive offers</p>
+
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" />
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 DiscoverLanka. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

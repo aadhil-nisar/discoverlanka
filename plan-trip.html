@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiscoverLanka - Smart Trip Planner</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/plan-trip.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/signin.css" />
+</head>
+<body>
+
+  <header class="header scrolled">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">Discover<span>Lanka</span></a>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+
+          <li class="dropdown">
+            <a href="places.html">Places <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="category.html?type=beaches">Beaches</a></li>
+              <li><a href="category.html?type=hill-country">Hill Country</a></li>
+              <li><a href="category.html?type=waterfalls">Waterfalls</a></li>
+              <li><a href="category.html?type=heritage-sites">Heritage Sites</a></li>
+              <li><a href="category.html?type=wildlife">Wildlife</a></li>
+            </ul>
+          </li>
+
+          <li><a href="plan-trip.html" class="active">Plan Trip</a></li>
+          <li><a href="itinerary-planner.html">Itinerary Planner</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <section class="smart-trip-hero">
+    <div class="smart-trip-hero-overlay"></div>
+    <div class="smart-trip-orb orb-1"></div>
+    <div class="smart-trip-orb orb-2"></div>
+    <div class="smart-trip-orb orb-3"></div>
+
+    <div class="container smart-trip-hero-grid">
+      <div class="smart-trip-hero-content">
+        <span class="smart-trip-badge">
+          <i class="fas fa-sparkles"></i> AI Powered Route Planning
+        </span>
+        <h1>Generate a full Sri Lanka trip automatically</h1>
+        <p>
+          Select your route, days, travel style, budget, transport, and interests.
+          DiscoverLanka will generate a smart itinerary with route flow, places on the way,
+          local food and shopping experiences, and an estimated budget breakdown.
+        </p>
+
+        <div class="smart-trip-hero-points">
+          <div><i class="fas fa-route"></i> Route-aware planning</div>
+          <div><i class="fas fa-bus"></i> Transport cost guidance</div>
+          <div><i class="fas fa-store"></i> Local experience suggestions</div>
+          <div><i class="fas fa-wallet"></i> Budget estimate included</div>
+        </div>
+
+        <div class="smart-trip-hero-actions">
+          <a href="#plannerFormSection" class="btn btn-dark">Start Planning</a>
+          <button type="button" class="btn btn-outline-light" id="printAiPlanBtnTop">
+            <i class="fas fa-print"></i>&nbsp; Print Result
+          </button>
+        </div>
+      </div>
+
+      <div class="smart-trip-hero-card">
+        <div class="ai-mini-card">
+          <div class="ai-mini-top">
+            <span>Example Plan</span>
+            <strong>Colombo → Nuwara Eliya</strong>
+          </div>
+          <ul>
+            <li>Kadugannawa viewpoint stop</li>
+            <li>Kandy city break + Temple area</li>
+            <li>Tea estate / Ramboda side experience</li>
+            <li>Local sweets, tea shops, and scenic cafés</li>
+            <li>Transport + stay + food budget summary</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section smart-trip-main" id="plannerFormSection">
+    <div class="container">
+      <div class="smart-trip-layout">
+
+        <div class="smart-trip-form-panel reveal active">
+          <div class="smart-trip-panel-head">
+            <h2>Smart Plan My Trip</h2>
+            <p>Choose your preferences and generate a route-based itinerary.</p>
+          </div>
+
+          <form id="aiTripPlannerForm" class="smart-trip-form">
+
+            <div class="smart-trip-grid two-col">
+              <div class="smart-trip-field">
+                <label for="tripStart">Starting From</label>
+                <select id="tripStart" required>
+                  <option value="">Select starting point</option>
+                  <option>Colombo</option>
+                  <option>Negombo</option>
+                  <option>Kandy</option>
+                  <option>Galle</option>
+                  <option>Matara</option>
+                  <option>Ella</option>
+                  <option>Nuwara Eliya</option>
+                  <option>Jaffna</option>
+                  <option>Anuradhapura</option>
+                  <option>Trincomalee</option>
+                  <option>Sigiriya</option>
+                  <option>Badulla</option>
+                </select>
+              </div>
+
+              <div class="smart-trip-field">
+                <label for="tripDestination">Main Destination</label>
+                <select id="tripDestination" required>
+                  <option value="">Select destination</option>
+                  <option>Nuwara Eliya</option>
+                  <option>Ella</option>
+                  <option>Kandy</option>
+                  <option>Sigiriya</option>
+                  <option>Galle</option>
+                  <option>Mirissa</option>
+                  <option>Arugam Bay</option>
+                  <option>Yala</option>
+                  <option>Jaffna</option>
+                  <option>Trincomalee</option>
+                  <option>Haputale</option>
+                  <option>Bentota</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="smart-trip-grid three-col">
+              <div class="smart-trip-field">
+                <label for="tripDays">Trip Duration</label>
+                <select id="tripDays" required>
+                  <option value="">Select days</option>
+                  <option value="1">1 Day</option>
+                  <option value="2">2 Days</option>
+                  <option value="3">3 Days</option>
+                  <option value="4">4 Days</option>
+                  <option value="5">5 Days</option>
+                  <option value="6">6 Days</option>
+                  <option value="7">7 Days</option>
+                </select>
+              </div>
+
+              <div class="smart-trip-field">
+                <label for="tripPeople">Travelers</label>
+                <select id="tripPeople" required>
+                  <option value="">Select count</option>
+                  <option value="1">1 Person</option>
+                  <option value="2">2 People</option>
+                  <option value="3">3 People</option>
+                  <option value="4">4 People</option>
+                  <option value="5">5+ People</option>
+                </select>
+              </div>
+
+              <div class="smart-trip-field">
+                <label for="tripStyle">Travel Style</label>
+                <select id="tripStyle" required>
+                  <option value="">Select style</option>
+                  <option>Budget Explorer</option>
+                  <option>Comfort Traveler</option>
+                  <option>Luxury Escape</option>
+                  <option>Backpacker</option>
+                  <option>Family Friendly</option>
+                  <option>Couple Getaway</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="smart-trip-grid three-col">
+              <div class="smart-trip-field">
+                <label for="tripTransport">Primary Transport</label>
+                <select id="tripTransport" required>
+                  <option value="">Select transport</option>
+                  <option>Private Car</option>
+                  <option>Train</option>
+                  <option>Bus</option>
+                  <option>Taxi / Ride-Hailing</option>
+                  <option>Mixed Transport</option>
+                </select>
+              </div>
+
+              <div class="smart-trip-field">
+                <label for="tripBudgetLevel">Budget Range</label>
+                <select id="tripBudgetLevel" required>
+                  <option value="">Select budget level</option>
+                  <option>Low Budget</option>
+                  <option>Mid Range</option>
+                  <option>Premium</option>
+                </select>
+              </div>
+
+              <div class="smart-trip-field">
+                <label for="tripStay">Accommodation Type</label>
+                <select id="tripStay" required>
+                  <option value="">Select stay type</option>
+                  <option>Guest House</option>
+                  <option>Budget Hotel</option>
+                  <option>Boutique Stay</option>
+                  <option>Resort</option>
+                  <option>Homestay</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="smart-trip-field">
+              <label>Interests</label>
+              <div class="smart-trip-check-grid">
+                <label><input type="checkbox" value="Scenic viewpoints" /> Scenic viewpoints</label>
+                <label><input type="checkbox" value="Waterfalls" /> Waterfalls</label>
+                <label><input type="checkbox" value="Tea experiences" /> Tea experiences</label>
+                <label><input type="checkbox" value="Local food" /> Local food</label>
+                <label><input type="checkbox" value="Street shopping" /> Street shopping</label>
+                <label><input type="checkbox" value="Nature walks" /> Nature walks</label>
+                <label><input type="checkbox" value="Heritage places" /> Heritage places</label>
+                <label><input type="checkbox" value="Photography" /> Photography</label>
+              </div>
+            </div>
+
+            <div class="smart-trip-grid two-col">
+              <div class="smart-trip-field">
+                <label for="tripFood">Food Preference</label>
+                <select id="tripFood">
+                  <option value="">Select food preference</option>
+                  <option>Local Sri Lankan Food</option>
+                  <option>Vegetarian Friendly</option>
+                  <option>Mixed Cuisine</option>
+                  <option>Café and Desserts</option>
+                </select>
+              </div>
+
+              <div class="smart-trip-field">
+                <label for="tripPace">Trip Pace</label>
+                <select id="tripPace">
+                  <option value="">Select pace</option>
+                  <option>Relaxed</option>
+                  <option>Balanced</option>
+                  <option>Fast-Paced</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="smart-trip-field">
+              <label for="tripMustInclude">Must Include</label>
+              <textarea
+                id="tripMustInclude"
+                rows="3"
+                placeholder="Example: Kandy stop, tea factory, local sweets shop, scenic train if possible"
+              ></textarea>
+            </div>
+
+            <div class="smart-trip-field">
+              <label for="tripAvoid">Avoid / Notes</label>
+              <textarea
+                id="tripAvoid"
+                rows="3"
+                placeholder="Example: avoid very long hikes, avoid expensive hotels, want family-friendly places"
+              ></textarea>
+            </div>
+
+            <div class="smart-trip-actions">
+              <button type="submit" class="btn btn-dark" id="generateAiPlanBtn">
+                <i class="fas fa-wand-magic-sparkles"></i>&nbsp; Generate Smart Itinerary
+              </button>
+
+              <button type="button" class="btn smart-trip-secondary-btn" id="resetAiTripBtn">
+                <i class="fas fa-rotate-left"></i>&nbsp; Reset
+              </button>
+            </div>
+
+            <p class="smart-trip-helper" id="aiPlannerStatus">
+              Your itinerary will include route flow, stops on the way, local experiences, and budget guidance.
+            </p>
+          </form>
+        </div>
+
+        <div class="smart-trip-result-panel reveal active">
+          <div class="smart-result-placeholder" id="smartResultPlaceholder">
+            <div class="smart-placeholder-icon">
+              <i class="fas fa-map-location-dot"></i>
+            </div>
+            <h2>Your AI-generated trip will appear here</h2>
+            <p>
+              Select your trip details and click <strong>Generate Smart Itinerary</strong>.
+            </p>
+          </div>
+
+          <div class="smart-result-wrap hidden" id="smartResultWrap">
+            <div class="smart-result-top">
+              <div>
+                <span class="smart-result-label">AI Trip Result</span>
+                <h2 id="aiResultTitle">Smart Sri Lanka Itinerary</h2>
+                <p id="aiResultSubtitle">Route-based personalized travel plan</p>
+              </div>
+
+              <div class="smart-result-top-actions">
+                <button type="button" class="btn smart-mini-btn" id="copyAiPlanBtn">
+                  <i class="fas fa-copy"></i>&nbsp; Copy
+                </button>
+                <button type="button" class="btn smart-mini-btn" id="printAiPlanBtn">
+                  <i class="fas fa-print"></i>&nbsp; Print
+                </button>
+              </div>
+            </div>
+
+            <div class="smart-summary-grid" id="smartSummaryGrid"></div>
+
+            <div class="smart-block">
+              <div class="smart-block-head">
+                <h3><i class="fas fa-circle-info"></i> Overview</h3>
+              </div>
+              <div id="aiOverview"></div>
+            </div>
+
+            <div class="smart-block">
+              <div class="smart-block-head">
+                <h3><i class="fas fa-route"></i> Route Flow</h3>
+              </div>
+              <div id="aiRouteFlow"></div>
+            </div>
+
+            <div class="smart-block">
+              <div class="smart-block-head">
+                <h3><i class="fas fa-location-dot"></i> Stops on the Way</h3>
+              </div>
+              <div id="aiPathStops"></div>
+            </div>
+
+            <div class="smart-block">
+              <div class="smart-block-head">
+                <h3><i class="fas fa-store"></i> Local Shops & Food Experiences</h3>
+              </div>
+              <div id="aiLocalExperiences"></div>
+            </div>
+
+            <div class="smart-block">
+              <div class="smart-block-head">
+                <h3><i class="fas fa-wallet"></i> Budget Breakdown</h3>
+              </div>
+              <div id="aiBudget"></div>
+            </div>
+
+            <div class="smart-block">
+              <div class="smart-block-head">
+                <h3><i class="fas fa-bus"></i> Transport Guidance</h3>
+              </div>
+              <div id="aiTransport"></div>
+            </div>
+
+            <div class="smart-block">
+              <div class="smart-block-head">
+                <h3><i class="fas fa-calendar-days"></i> Day-by-Day Plan</h3>
+              </div>
+              <div id="aiDayPlan"></div>
+            </div>
+
+            <div class="smart-block">
+              <div class="smart-block-head">
+                <h3><i class="fas fa-lightbulb"></i> Smart Tips</h3>
+              </div>
+              <div id="aiTips"></div>
+            </div>
+
+            <div class="smart-block">
+              <div class="smart-block-head">
+                <h3><i class="fas fa-triangle-exclamation"></i> Important Notes</h3>
+              </div>
+              <div id="aiNotes"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo footer-logo">
+          <a href="index.html">Discover<span>Lanka</span></a>
+        </div>
+        <p>Your trusted companion for exploring the wonders of Sri Lanka</p>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="places.html">Destinations</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="help.html">Help Center</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Subscribe to get travel tips and exclusive offers</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" />
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 DiscoverLanka. Student project in development.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/plan-trip.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

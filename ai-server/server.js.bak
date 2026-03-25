@@ -1,0 +1,196 @@
+// ============================================================
+// ai-server/server.js  — Node.js AI Trip Planner Server
+// Run: node server.js
+// Requires: npm install express cors node-fetch dotenv
+// ============================================================
+
+require('dotenv').config();
+const express = require('express');
+const cors    = require('cors');
+
+// node-fetch v3 is ESM-only; use dynamic import so this CommonJS file works
+let fetch;
+(async () => { fetch = (await import('node-fetch')).default; })();
+
+const app  = express();
+const PORT = process.env.PORT || 3001;
+
+// ── Middleware ──────────────────────────────────────────────
+app.use(cors());
+app.use(express.json());
+
+// ── Health check ────────────────────────────────────────────
+app.get('/health', (_req, res) => res.json({ status: 'ok' }));
+
+// ── AI Trip Plan endpoint ───────────────────────────────────
+app.post('/api/ai-plan-trip', async (req, res) => {
+  const {
+    start, destination, days, travelers,
+    style, transport, budgetLevel, accommodation,
+    interests = [], foodPreference, pace,
+    mustInclude, avoid
+  } = req.body;
+
+  // ── Validation ─────────────────────────────────────────────
+  if (!start || !destination || !days || !travelers ||
+      !style || !transport || !budgetLevel || !accommodation) {
+    return res.status(400).json({ success: false, message: 'Missing required fields.' });
+  }
+
+  if (start === destination) {
+    return res.status(400).json({
+      success: false,
+      message: 'Starting point and destination cannot be the same.'
+    });
+  }
+
+  // ── API Key ────────────────────────────────────────────────
+  const apiKey = process.env.GEMINI_API_KEY || '';
+  const model  = process.env.GEMINI_MODEL  || 'gemini-2.5-flash';
+
+  if (!apiKey) {
+    return res.status(500).json({
+      success: false,
+      message: 'AI is not configured. Set GEMINI_API_KEY in ai-server/.env'
+    });
+  }
+
+  // ── Prompt ─────────────────────────────────────────────────
+  const interestsStr = Array.isArray(interests) ? interests.join(', ') : interests;
+
+  const prompt = `You are an expert Sri Lanka travel planner.
+
+Create a detailed, realistic Sri Lanka trip itinerary in VALID JSON only.
+
+TRIP DETAILS:
+- Starting Point: ${start}
+- Main Destination: ${destination}
+- Duration: ${days} days
+- Travelers: ${travelers}
+- Travel Style: ${style}
+- Transport Mode: ${transport}
+- Budget Level: ${budgetLevel}
+- Accommodation: ${accommodation}
+- Interests: ${interestsStr}
+- Food Preference: ${foodPreference || ''}
+- Pace: ${pace || ''}
+- Must Include: ${mustInclude || ''}
+- Avoid: ${avoid || ''}
+
+IMPORTANT RULES:
+- Suggest a realistic Sri Lanka route.
+- Mention realistic places on the way.
+- Include local experiences, food, tea, viewpoints, shopping when relevant.
+- Keep travel practical for Sri Lankan roads and distance.
+- Include budget estimates in LKR.
+- Include transport guidance in LKR.
+- Use actual Sri Lankan place names.
+- Return ONLY raw JSON.
+- Do not wrap JSON in markdown.
+- Do not add explanations before or after JSON.
+
+JSON FORMAT:
+{
+  "title": "",
+  "subtitle": "",
+  "summary": {
+    "start": "",
+    "destination": "",
+    "days": "",
+    "transport": "",
+    "totalEstimatedBudgetLKR": ""
+  },
+  "overview": [],
+  "routeFlow": [],
+  "pathStops": [
+    { "name": "", "positionOnRoute": "", "reason": "", "highlights": [] }
+  ],
+  "localExperiences": [
+    { "name": "", "type": "", "description": "", "bestFor": [] }
+  ],
+  "budgetBreakdown": [
+    { "category": "", "estimate": "", "note": "" }
+  ],
+  "transportGuidance": [
+    { "mode": "", "detail": "", "priceGuide": "" }
+  ],
+  "dayPlan": [
+    { "day": 1, "title": "", "base": "", "plan": "", "keyPlaces": [] }
+  ],
+  "smartTips": [],
+  "importantNotes": []
+}`;
+
+  // ── Call Gemini ────────────────────────────────────────────
+  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+  try {
+    const geminiRes = await fetch(geminiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 4096,
+          responseMimeType: 'application/json'
+        }
+      }),
+      timeout: 90000
+    });
+
+    const geminiData = await geminiRes.json();
+
+    if (geminiData.error) {
+      return res.status(500).json({
+        success: false,
+        message: 'AI error: ' + (geminiData.error.message || 'Unknown error')
+      });
+    }
+
+    let text = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+
+    if (!text) {
+      const reason = geminiData?.candidates?.[0]?.finishReason || '';
+      return res.status(500).json({
+        success: false,
+        message: reason === 'SAFETY'
+          ? 'AI declined this itinerary due to content policy.'
+          : 'AI returned an empty response. Please try again.'
+      });
+    }
+
+    // Strip markdown fences just in case
+    text = text.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
+
+    let plan = null;
+    try {
+      plan = JSON.parse(text);
+    } catch {
+      const match = text.match(/\{[\s\S]*\}/);
+      if (match) plan = JSON.parse(match[0]);
+    }
+
+    if (!plan || typeof plan !== 'object') {
+      return res.status(500).json({
+        success: false,
+        message: 'AI returned invalid itinerary data. Please try again.'
+      });
+    }
+
+    return res.json({ success: true, plan });
+
+  } catch (err) {
+    console.error('AI server error:', err);
+    return res.status(500).json({
+      success: false,
+      message: 'Could not connect to AI service: ' + err.message
+    });
+  }
+});
+
+// ── Start ───────────────────────────────────────────────────
+app.listen(PORT, () => {
+  console.log(`✅  AI Trip Planner server running on http://localhost:${PORT}`);
+  console.log(`   POST http://localhost:${PORT}/api/ai-plan-trip`);
+});

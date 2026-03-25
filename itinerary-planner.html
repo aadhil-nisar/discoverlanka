@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiscoverLanka - Manual Itinerary Planner</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/signin.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header scrolled">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">Discover<span>Lanka</span></a>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+
+          <li class="dropdown">
+            <a href="places.html">Places <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="category.html?type=beaches">Beaches</a></li>
+              <li><a href="category.html?type=hill-country">Hill Country</a></li>
+              <li><a href="category.html?type=waterfalls">Waterfalls</a></li>
+              <li><a href="category.html?type=heritage-sites">Heritage Sites</a></li>
+              <li><a href="category.html?type=wildlife">Wildlife</a></li>
+            </ul>
+          </li>
+
+          <li><a href="plan-trip.html">Plan Trip</a></li>
+          <li><a href="itinerary-planner.html" class="active">Itinerary Planner</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="manual-planner-hero">
+    <div class="manual-planner-hero-overlay"></div>
+    <div class="container">
+      <div class="manual-planner-hero-content">
+        <span class="manual-planner-badge">
+          <i class="fas fa-pen-ruler"></i> Manual Itinerary Planner
+        </span>
+        <h1>Create Your Trip Plan Yourself</h1>
+        <p>
+          Build your own Sri Lanka itinerary by entering destinations, stops, travel details,
+          interests, budget, accommodation, and notes. Add or remove stops as you like and
+          generate a clean printable travel plan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Planner -->
+  <section class="section manual-planner-section">
+    <div class="container">
+      <div class="manual-planner-grid">
+
+        <!-- LEFT -->
+        <div class="manual-planner-form-panel reveal active">
+          <div class="manual-panel-head">
+            <h2>Plan Your Trip</h2>
+            <p>Fill your trip details and build your itinerary manually.</p>
+          </div>
+
+          <form id="manualPlannerForm">
+
+            <div class="manual-form-grid two-col">
+              <div class="manual-field">
+                <label for="tripTitle">Trip Title</label>
+                <input type="text" id="tripTitle" placeholder="Example: My Sri Lanka Adventure" />
+              </div>
+
+              <div class="manual-field">
+                <label for="tripDays">Trip Duration (Days)</label>
+                <input type="number" id="tripDays" min="1" placeholder="Example: 5" />
+              </div>
+            </div>
+
+            <div class="manual-form-grid two-col">
+              <div class="manual-field">
+                <label for="startLocation">Starting Location</label>
+                <input type="text" id="startLocation" placeholder="Example: Colombo" />
+              </div>
+
+              <div class="manual-field">
+                <label for="endLocation">Ending Location</label>
+                <input type="text" id="endLocation" placeholder="Example: Mirissa" />
+              </div>
+            </div>
+
+            <div class="manual-form-grid three-col">
+              <div class="manual-field">
+                <label for="budget">Total Budget (LKR)</label>
+                <input type="number" id="budget" min="0" placeholder="Example: 75000" />
+              </div>
+
+              <div class="manual-field">
+                <label for="travelMode">Travel Mode</label>
+                <input type="text" id="travelMode" placeholder="Example: Private Car / Train / Bus" />
+              </div>
+
+              <div class="manual-field">
+                <label for="accommodation">Accommodation</label>
+                <input type="text" id="accommodation" placeholder="Example: Mid-range Hotel" />
+              </div>
+            </div>
+
+            <div class="manual-field">
+              <label for="interests">Travel Interests</label>
+              <input
+                type="text"
+                id="interests"
+                placeholder="Example: Nature, Beaches, Wildlife, Culture, Scenic Views"
+              />
+            </div>
+
+            <div class="manual-field">
+              <label for="foodStyle">Food Preference</label>
+              <input
+                type="text"
+                id="foodStyle"
+                placeholder="Example: Local food, seafood, vegetarian, restaurants"
+              />
+            </div>
+
+            <div class="manual-field">
+              <label for="specialNotes">Special Notes / Things to Consider</label>
+              <textarea
+                id="specialNotes"
+                rows="4"
+                placeholder="Example: Need relaxed travel, family friendly places, early check-in, avoid long night travel..."
+              ></textarea>
+            </div>
+
+            <!-- Destinations -->
+            <div class="manual-dynamic-section">
+              <div class="manual-dynamic-top">
+                <div>
+                  <h3><i class="fas fa-route"></i> Main Destinations</h3>
+                  <p>Add all major places in your travel route</p>
+                </div>
+                <button type="button" class="manual-add-btn" id="addDestinationBtn">
+                  <i class="fas fa-plus"></i> Add Destination
+                </button>
+              </div>
+
+              <div id="destinationList" class="manual-dynamic-list"></div>
+            </div>
+
+            <!-- Stops -->
+            <div class="manual-dynamic-section">
+              <div class="manual-dynamic-top">
+                <div>
+                  <h3><i class="fas fa-location-crosshairs"></i> Stops / Places to Visit on the Way</h3>
+                  <p>Add stops based on your interest and route</p>
+                </div>
+                <button type="button" class="manual-add-btn" id="addStopBtn">
+                  <i class="fas fa-plus"></i> Add Stop
+                </button>
+              </div>
+
+              <div id="stopList" class="manual-dynamic-list"></div>
+            </div>
+
+            <!-- Day Plan -->
+            <div class="manual-dynamic-section">
+              <div class="manual-dynamic-top">
+                <div>
+                  <h3><i class="fas fa-calendar-days"></i> Day-by-Day Plan</h3>
+                  <p>Add your daily activities and travel notes</p>
+                </div>
+                <button type="button" class="manual-add-btn" id="addDayBtn">
+                  <i class="fas fa-plus"></i> Add Day Plan
+                </button>
+              </div>
+
+              <div id="dayPlanListBuilder" class="manual-day-list"></div>
+            </div>
+
+            <div class="manual-actions">
+              <button type="submit" class="btn btn-dark">
+                <i class="fas fa-wand-magic-sparkles"></i>&nbsp; Generate Itinerary
+              </button>
+
+              <button type="button" class="btn manual-secondary-btn" id="resetManualPlanner">
+                <i class="fas fa-rotate-left"></i>&nbsp; Reset Planner
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="manual-planner-preview-panel reveal active" id="manualPreviewPanel">
+          <div class="manual-preview-placeholder" id="manualPreviewPlaceholder">
+            <div class="manual-preview-icon">
+              <i class="fas fa-map-location-dot"></i>
+            </div>
+            <h2>Your itinerary preview will appear here</h2>
+            <p>
+              Fill the form, add destinations, stops, and day plans, then click
+              <strong>Generate Itinerary</strong>.
+            </p>
+          </div>
+
+          <div class="manual-itinerary-result hidden" id="manualItineraryResult">
+            <div class="manual-result-top">
+              <div>
+                <h2 id="resultTripTitle">My Trip Itinerary</h2>
+                <p>Custom travel plan prepared with DiscoverLanka</p>
+              </div>
+
+              <button type="button" class="btn manual-print-btn" id="manualPrintBtn">
+                <i class="fas fa-print"></i>&nbsp; Print
+              </button>
+            </div>
+
+            <div class="manual-summary-grid">
+              <div class="manual-summary-card">
+                <span>Trip Days</span>
+                <strong id="resultDays">-</strong>
+              </div>
+              <div class="manual-summary-card">
+                <span>Start</span>
+                <strong id="resultStart">-</strong>
+              </div>
+              <div class="manual-summary-card">
+                <span>End</span>
+                <strong id="resultEnd">-</strong>
+              </div>
+              <div class="manual-summary-card">
+                <span>Budget</span>
+                <strong id="resultBudget">-</strong>
+              </div>
+            </div>
+
+            <div class="manual-result-block">
+              <div class="manual-result-block-title">
+                <h3><i class="fas fa-circle-info"></i> Trip Overview</h3>
+              </div>
+              <ul class="manual-overview-list" id="manualOverviewList"></ul>
+            </div>
+
+            <div class="manual-result-block">
+              <div class="manual-result-block-title">
+                <h3><i class="fas fa-route"></i> Main Route</h3>
+              </div>
+              <div class="manual-route-wrap" id="manualRouteWrap"></div>
+            </div>
+
+            <div class="manual-result-block">
+              <div class="manual-result-block-title">
+                <h3><i class="fas fa-location-dot"></i> Stops & Places to Visit</h3>
+              </div>
+              <div class="manual-stop-wrap" id="manualStopWrap"></div>
+            </div>
+
+            <div class="manual-result-block">
+              <div class="manual-result-block-title">
+                <h3><i class="fas fa-calendar-check"></i> Day-by-Day Plan</h3>
+              </div>
+              <div id="manualDayPlanOutput" class="manual-day-output"></div>
+            </div>
+
+            <div class="manual-result-block">
+              <div class="manual-result-block-title">
+                <h3><i class="fas fa-note-sticky"></i> Special Notes</h3>
+              </div>
+              <div class="manual-notes-box" id="manualNotesBox">No notes added.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo footer-logo">
+          <a href="index.html">Discover<span>Lanka</span></a>
+        </div>
+        <p>Your trusted companion for exploring the wonders of Sri Lanka</p>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="places.html">Destinations</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="help.html">Help Center</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Subscribe to get travel tips and exclusive offers</p>
+
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" />
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 DiscoverLanka. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

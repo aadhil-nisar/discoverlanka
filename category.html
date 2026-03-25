@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiscoverLanka - Category</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/category.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/signin.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">Discover<span>Lanka</span></a>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+
+          <li class="dropdown">
+            <a href="places.html" class="active">Places <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="category.html?type=beaches">Beaches</a></li>
+              <li><a href="category.html?type=hill-country">Hill Country</a></li>
+              <li><a href="category.html?type=waterfalls">Waterfalls</a></li>
+              <li><a href="category.html?type=heritage-sites">Heritage Sites</a></li>
+              <li><a href="category.html?type=wildlife">Wildlife</a></li>
+            </ul>
+          </li>
+
+          <li><a href="itinerary-planner.html">Plan Trip</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Hero -->
+  <section class="category-hero" id="categoryHero">
+    <div class="category-hero-overlay"></div>
+    <div class="container category-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="places.html">Places</a>
+        <span>/</span>
+        <strong id="heroCategoryName">Category</strong>
+      </div>
+
+      <h1 id="heroTitle">Explore Sri Lanka</h1>
+      <p id="heroDescription">
+        Discover beautiful destinations across Sri Lanka with useful travel details, filters, and highlights.
+      </p>
+
+      <div class="hero-category-stats">
+        <div class="hero-stat-card">
+          <span class="hero-stat-number" id="heroPlaceCount">0</span>
+          <span class="hero-stat-label">Places Listed</span>
+        </div>
+        <div class="hero-stat-card">
+          <span class="hero-stat-number" id="heroDistrictCount">0</span>
+          <span class="hero-stat-label">Districts Covered</span>
+        </div>
+        <div class="hero-stat-card">
+          <span class="hero-stat-number">5</span>
+          <span class="hero-stat-label">Main Categories</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="section category-controls-section">
+    <div class="container">
+      <div class="category-controls reveal">
+        <div class="controls-top">
+          <div>
+            <h2 id="listingTitle">Category Places</h2>
+            <p id="listingSubtitle">Browse destinations and filter by district.</p>
+          </div>
+
+          <div class="results-badge">
+            <i class="fas fa-map-location-dot"></i>
+            <span id="resultsCount">0 places found</span>
+          </div>
+        </div>
+
+        <div class="filter-grid">
+          <div class="filter-group">
+            <label for="districtFilter">Filter by District</label>
+            <select id="districtFilter">
+              <option value="all">All Districts</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="searchInput">Search Place</label>
+            <input type="text" id="searchInput" placeholder="Search by place name, district, feature..." />
+          </div>
+
+          <div class="filter-group">
+            <label for="sortFilter">Sort By</label>
+            <select id="sortFilter">
+              <option value="name-asc">Name A - Z</option>
+              <option value="distance-colombo">Nearest to Colombo</option>
+              <option value="distance-kandy">Nearest to Kandy</option>
+              <option value="district-asc">District A - Z</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>&nbsp;</label>
+            <button class="btn btn-dark control-btn" id="resetFiltersBtn">
+              <i class="fas fa-rotate-left"></i> Reset Filters
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Intro -->
+  <section class="section category-intro-section">
+    <div class="container">
+      <div class="category-intro-card reveal">
+        <div class="category-intro-icon" id="introIcon">
+          <i class="fas fa-location-dot"></i>
+        </div>
+
+        <div class="category-intro-text">
+          <h3 id="introTitle">Travel Smart Across Sri Lanka</h3>
+          <p id="introText">
+            Each destination card includes district, province, quick highlights, and approximate distances from Colombo and Kandy to help travelers plan more easily.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Places Grid -->
+  <section class="section category-places-section">
+    <div class="container">
+      <div class="places-grid" id="placesGrid"></div>
+
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">
+          <i class="fas fa-route"></i>
+        </div>
+        <h3>No places found</h3>
+        <p>Try changing the district filter or search term.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Tips -->
+  <section class="section travel-tip-section">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Helpful Travel Tips</h2>
+        <p>Quick notes for planning your journey around Sri Lanka</p>
+      </div>
+
+      <div class="travel-tip-grid">
+        <div class="travel-tip-card reveal">
+          <div class="tip-icon"><i class="fas fa-car-side"></i></div>
+          <h3>Travel Time Can Vary</h3>
+          <p>Road distance and actual travel time may differ because of mountain roads, traffic, and route conditions.</p>
+        </div>
+
+        <div class="travel-tip-card reveal">
+          <div class="tip-icon"><i class="fas fa-camera-retro"></i></div>
+          <h3>Check Opening & Access</h3>
+          <p>Some heritage sites, parks, and viewpoints can have seasonal limits, ticket changes, or best visiting hours.</p>
+        </div>
+
+        <div class="travel-tip-card reveal">
+          <div class="tip-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+          <h3>Weather Matters</h3>
+          <p>Beach, hill country, and wildlife experiences can change a lot depending on monsoon season and local climate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container cta-content">
+      <h2>Ready to Build Your Sri Lanka Journey?</h2>
+      <p>
+        Discover destinations, compare locations, and move to the next step with your own travel plan.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="plan-trip.html" class="btn btn-light">Smart Planner</a>
+        <a href="itinerary-planner.html" class="btn btn-outline-light">Open Itinerary Planner</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo footer-logo">
+          <a href="index.html">Discover<span>Lanka</span></a>
+        </div>
+        <p>Your trusted companion for exploring the wonders of Sri Lanka</p>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="places.html">Destinations</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="help.html">Help Center</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Subscribe to get travel tips and exclusive offers</p>
+
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" />
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 DiscoverLanka. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/category.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DiscoverLanka – Sign In / Create Account</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/signin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="signin-page">
+
+  <!-- HEADER -->
+  <header class="header scrolled">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">Discover<span>Lanka</span></a>
+      </div>
+      <nav class="navbar" id="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="places.html">Places <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="category.html?type=beaches">Beaches</a></li>
+              <li><a href="category.html?type=hill-country">Hill Country</a></li>
+              <li><a href="category.html?type=waterfalls">Waterfalls</a></li>
+              <li><a href="category.html?type=heritage-sites">Heritage Sites</a></li>
+              <li><a href="category.html?type=wildlife">Wildlife</a></li>
+            </ul>
+          </li>
+          <li><a href="itinerary-planner.html">Plan Trip</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="signin.html" class="active nav-signin-link"><i class="fas fa-user"></i> Sign In</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+    </div>
+  </header>
+
+  <!-- MAIN SIGNIN LAYOUT -->
+  <main class="signin-main">
+    <!-- Left panel: Branding -->
+    <div class="signin-branding">
+      <div class="signin-branding-inner">
+        <div class="signin-brand-logo">Discover<span>Lanka</span></div>
+        <h2>Your journey through<br/>paradise starts here.</h2>
+        <p>Create an account to save itineraries, write reviews, and get personalized Sri Lanka travel recommendations.</p>
+        <div class="signin-brand-features">
+          <div class="signin-feature"><i class="fas fa-map-location-dot"></i> Save & manage itineraries</div>
+          <div class="signin-feature"><i class="fas fa-star"></i> Write and track reviews</div>
+          <div class="signin-feature"><i class="fas fa-robot"></i> AI-powered trip planning</div>
+          <div class="signin-feature"><i class="fas fa-user-circle"></i> Personalized profile</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right panel: Forms -->
+    <div class="signin-forms">
+      <div class="signin-forms-inner">
+
+        <!-- Tab switcher -->
+        <div class="signin-tabs" id="signinTabs">
+          <button class="signin-tab active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+          <button class="signin-tab" id="tabRegister" onclick="switchTab('register')">Create Account</button>
+        </div>
+
+        <!-- ── LOGIN FORM ── -->
+        <div id="panelLogin" class="signin-panel active">
+          <h2 class="signin-panel-title">Welcome back!</h2>
+          <p class="signin-panel-sub">Sign in to continue your Sri Lanka adventure.</p>
+          <div class="signin-msg" id="loginMsg"></div>
+          <form id="loginForm" novalidate>
+            <div class="sif-field">
+              <label for="loginEmail"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <div class="sif-field">
+              <label for="loginPassword"><i class="fas fa-lock"></i> Password</label>
+              <div class="sif-password-wrap">
+                <input type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password" required />
+                <button type="button" class="sif-toggle-pw" onclick="togglePw('loginPassword', this)"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="sif-forgot">
+              <button type="button" onclick="switchTab('forgot')">Forgot password?</button>
+            </div>
+            <button type="submit" class="sif-submit-btn" id="loginBtn">
+              <i class="fas fa-right-to-bracket"></i> Sign In
+            </button>
+          </form>
+          <p class="sif-switch-text">Don't have an account? <button onclick="switchTab('register')">Create one free</button></p>
+        </div>
+
+        <!-- ── REGISTER FORM ── -->
+        <div id="panelRegister" class="signin-panel">
+          <h2 class="signin-panel-title">Create your account</h2>
+          <p class="signin-panel-sub">Join DiscoverLanka and start planning your dream trip.</p>
+          <div class="signin-msg" id="registerMsg"></div>
+          <form id="registerForm" novalidate>
+            <div class="sif-row">
+              <div class="sif-field">
+                <label for="regFirstName"><i class="fas fa-user"></i> First Name</label>
+                <input type="text" id="regFirstName" placeholder="First name" autocomplete="given-name" required />
+              </div>
+              <div class="sif-field">
+                <label for="regLastName"><i class="fas fa-user"></i> Last Name</label>
+                <input type="text" id="regLastName" placeholder="Last name" autocomplete="family-name" required />
+              </div>
+            </div>
+            <div class="sif-field">
+              <label for="regEmail"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <div class="sif-field">
+              <label for="regPassword"><i class="fas fa-lock"></i> Password</label>
+              <div class="sif-password-wrap">
+                <input type="password" id="regPassword" placeholder="Min 6 characters" autocomplete="new-password" required />
+                <button type="button" class="sif-toggle-pw" onclick="togglePw('regPassword', this)"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="sif-strength" id="pwStrength"><span></span></div>
+            </div>
+            <div class="sif-field">
+              <label for="regPasswordConfirm"><i class="fas fa-lock"></i> Confirm Password</label>
+              <div class="sif-password-wrap">
+                <input type="password" id="regPasswordConfirm" placeholder="Repeat your password" autocomplete="new-password" required />
+                <button type="button" class="sif-toggle-pw" onclick="togglePw('regPasswordConfirm', this)"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <label class="sif-checkbox">
+              <input type="checkbox" id="regTerms" required />
+              I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
+            </label>
+            <button type="submit" class="sif-submit-btn" id="registerBtn">
+              <i class="fas fa-user-plus"></i> Create Account
+            </button>
+          </form>
+          <p class="sif-switch-text">Already have an account? <button onclick="switchTab('login')">Sign in</button></p>
+        </div>
+
+        <!-- ── EMAIL VERIFICATION ── -->
+        <div id="panelVerify" class="signin-panel">
+          <div class="verify-icon"><i class="fas fa-envelope-open-text"></i></div>
+          <h2 class="signin-panel-title">Check your email</h2>
+          <p class="signin-panel-sub" id="verifySubText">We sent a 6-digit verification code to your email.</p>
+          <div class="signin-msg" id="verifyMsg"></div>
+          <form id="verifyForm" novalidate>
+            <div class="sif-field">
+              <label for="verifyCode"><i class="fas fa-key"></i> Verification Code</label>
+              <input type="text" id="verifyCode" placeholder="000000" maxlength="6" inputmode="numeric" pattern="[0-9]{6}" autocomplete="one-time-code" required />
+            </div>
+            <button type="submit" class="sif-submit-btn" id="verifyBtn">
+              <i class="fas fa-circle-check"></i> Verify Email
+            </button>
+          </form>
+          <p class="sif-switch-text">Didn't receive the code? <button id="resendBtn" onclick="resendCode()">Resend</button></p>
+        </div>
+
+        <!-- ── FORGOT PASSWORD ── -->
+        <div id="panelForgot" class="signin-panel">
+          <div class="verify-icon"><i class="fas fa-lock-open"></i></div>
+          <h2 class="signin-panel-title">Reset your password</h2>
+          <p class="signin-panel-sub">Enter your email and we'll send you a reset link.</p>
+          <div class="signin-msg" id="forgotMsg"></div>
+          <form id="forgotForm" novalidate>
+            <div class="sif-field">
+              <label for="forgotEmail"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="forgotEmail" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <button type="submit" class="sif-submit-btn" id="forgotBtn">
+              <i class="fas fa-paper-plane"></i> Send Reset Link
+            </button>
+          </form>
+          <p class="sif-switch-text"><button onclick="switchTab('login')"><i class="fas fa-arrow-left"></i> Back to Sign In</button></p>
+        </div>
+
+        <!-- ── RESET PASSWORD ── -->
+        <div id="panelReset" class="signin-panel">
+          <div class="verify-icon"><i class="fas fa-key"></i></div>
+          <h2 class="signin-panel-title">Set new password</h2>
+          <p class="signin-panel-sub">Choose a strong password for your account.</p>
+          <div class="signin-msg" id="resetMsg"></div>
+          <form id="resetForm" novalidate>
+            <div class="sif-field">
+              <label for="resetPassword"><i class="fas fa-lock"></i> New Password</label>
+              <div class="sif-password-wrap">
+                <input type="password" id="resetPassword" placeholder="Min 6 characters" autocomplete="new-password" required />
+                <button type="button" class="sif-toggle-pw" onclick="togglePw('resetPassword', this)"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="sif-field">
+              <label for="resetPasswordConfirm"><i class="fas fa-lock"></i> Confirm Password</label>
+              <div class="sif-password-wrap">
+                <input type="password" id="resetPasswordConfirm" placeholder="Repeat password" autocomplete="new-password" required />
+                <button type="button" class="sif-toggle-pw" onclick="togglePw('resetPasswordConfirm', this)"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <button type="submit" class="sif-submit-btn" id="resetBtn">
+              <i class="fas fa-check-circle"></i> Reset Password
+            </button>
+          </form>
+        </div>
+
+        <!-- ── SUCCESS ── -->
+        <div id="panelSuccess" class="signin-panel">
+          <div class="success-anim"><i class="fas fa-circle-check"></i></div>
+          <h2 class="signin-panel-title" id="successTitle">You're in! 🎉</h2>
+          <p class="signin-panel-sub" id="successMsg">Redirecting you to your profile...</p>
+          <a href="profile.html" class="sif-submit-btn" id="successLink" style="text-decoration:none;display:flex;justify-content:center;align-items:center;gap:8px;">
+            <i class="fas fa-user-circle"></i> Go to My Profile
+          </a>
+        </div>
+
+      </div><!-- /.signin-forms-inner -->
+    </div><!-- /.signin-forms -->
+  </main>
+
+  <script>
+    const API = 'backend/api';
+    let pendingUserId = null;
+    let pendingUserEmail = null;
+
+    // ── On load: check URL params for reset link ──
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const action = params.get('action');
+      const tab    = params.get('tab');
+      if (action === 'reset') {
+        window.resetToken = params.get('token');
+        window.resetEmail = params.get('email');
+        switchTab('reset');
+      } else if (tab === 'register') {
+        switchTab('register');
+      } else if (tab === 'forgot') {
+        switchTab('forgot');
+      }
+
+      // If already logged in, redirect
+      try {
+        const saved = JSON.parse(localStorage.getItem('dl_user'));
+        const token = localStorage.getItem('dl_token');
+        if (saved && token) {
+          window.location.href = 'profile.html';
+        }
+      } catch(e) {}
+    })();
+
+    // ── Tab switching ──
+    function switchTab(tab) {
+      document.querySelectorAll('.signin-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.signin-tab').forEach(t => t.classList.remove('active'));
+      const panel = document.getElementById('panel' + tab.charAt(0).toUpperCase() + tab.slice(1));
+      if (panel) panel.classList.add('active');
+      if (tab === 'login')    document.getElementById('tabLogin')?.classList.add('active');
+      if (tab === 'register') document.getElementById('tabRegister')?.classList.add('active');
+      // Hide tabs for special panels
+      const hideTabs = ['verify', 'forgot', 'reset', 'success'];
+      document.getElementById('signinTabs').style.display = hideTabs.includes(tab) ? 'none' : '';
+    }
+
+    // ── Password visibility toggle ──
+    function togglePw(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const isText = input.type === 'text';
+      input.type = isText ? 'password' : 'text';
+      btn.innerHTML = isText ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+    }
+
+    // ── Password strength ──
+    document.getElementById('regPassword')?.addEventListener('input', function() {
+      const val = this.value;
+      const bar = document.getElementById('pwStrength').querySelector('span');
+      let strength = 0;
+      if (val.length >= 6) strength++;
+      if (val.length >= 10) strength++;
+      if (/[A-Z]/.test(val)) strength++;
+      if (/[0-9]/.test(val)) strength++;
+      if (/[^A-Za-z0-9]/.test(val)) strength++;
+      const labels = ['', 'Weak', 'Fair', 'Good', 'Strong', 'Very Strong'];
+      const colors = ['', '#e63946', '#f4a261', '#e9c46a', '#52b788', '#2d6a4f'];
+      bar.textContent = val ? labels[strength] || 'Very Strong' : '';
+      bar.style.color = colors[strength] || '#2d6a4f';
+    });
+
+    // ── Show message ──
+    function showMsg(id, text, type) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = text;
+      el.className = 'signin-msg ' + (type || '');
+      el.style.display = text ? 'block' : 'none';
+    }
+
+    // ── Set button loading state ──
+    function setBtnLoading(id, loading, original) {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.disabled = loading;
+      btn.innerHTML = loading ? '<i class="fas fa-circle-notch fa-spin"></i> Please wait...' : original;
+    }
+
+    // ── API call ──
+    async function apiFetch(endpoint, body) {
+      const res = await fetch(`${API}/${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      return res.json();
+    }
+
+    // ── LOGIN ──
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email    = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      if (!email || !password) { showMsg('loginMsg', 'Please fill in all fields.', 'error'); return; }
+      setBtnLoading('loginBtn', true);
+      try {
+        const data = await apiFetch('auth.php?action=login', { email, password });
+        if (data.success) {
+          localStorage.setItem('dl_user', JSON.stringify(data.user));
+          localStorage.setItem('dl_token', data.token);
+          {
+            showSuccess(`Welcome back, ${data.user.first_name}! 👋`, 'Redirecting you now...');
+            setTimeout(() => { window.location.href = 'profile.html'; }, 1800);
+          }
+        } else {
+          showMsg('loginMsg', data.message, 'error');
+        }
+      } catch { showMsg('loginMsg', 'Connection error. Please try again.', 'error'); }
+      finally { setBtnLoading('loginBtn', false, '<i class="fas fa-right-to-bracket"></i> Sign In'); }
+    });
+
+    // ── REGISTER ──
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const first    = document.getElementById('regFirstName').value.trim();
+      const last     = document.getElementById('regLastName').value.trim();
+      const email    = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const confirm  = document.getElementById('regPasswordConfirm').value;
+      const terms    = document.getElementById('regTerms').checked;
+      if (!first || !last || !email || !password) { showMsg('registerMsg', 'Please fill in all fields.', 'error'); return; }
+      if (password !== confirm) { showMsg('registerMsg', 'Passwords do not match.', 'error'); return; }
+      if (password.length < 6)  { showMsg('registerMsg', 'Password must be at least 6 characters.', 'error'); return; }
+      if (!terms) { showMsg('registerMsg', 'Please accept the Terms of Service.', 'error'); return; }
+      setBtnLoading('registerBtn', true);
+      try {
+        const data = await apiFetch('auth.php?action=register', { first_name: first, last_name: last, email, password });
+        if (data.success) {
+          localStorage.setItem('dl_user', JSON.stringify(data.user));
+          localStorage.setItem('dl_token', data.token);
+          showSuccess(`Welcome, ${data.user.first_name}! 🎉`, 'Your account is ready. Redirecting...');
+          setTimeout(() => { window.location.href = 'profile.html'; }, 1800);
+        } else {
+          showMsg('registerMsg', data.message, 'error');
+        }
+      } catch { showMsg('registerMsg', 'Connection error. Please try again.', 'error'); }
+      finally { setBtnLoading('registerBtn', false, '<i class="fas fa-user-plus"></i> Create Account'); }
+    });
+
+    // ── VERIFY EMAIL ──
+    document.getElementById('verifyForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const code = document.getElementById('verifyCode').value.trim();
+      if (!code || code.length !== 6) { showMsg('verifyMsg', 'Please enter the 6-digit code.', 'error'); return; }
+      if (!pendingUserId) { showMsg('verifyMsg', 'Session expired. Please register again.', 'error'); return; }
+      setBtnLoading('verifyBtn', true);
+      try {
+        const data = await apiFetch('auth.php?action=verify_email', { user_id: pendingUserId, code });
+        if (data.success) {
+          localStorage.setItem('dl_user', JSON.stringify(data.user));
+          localStorage.setItem('dl_token', data.token);
+          showSuccess(`Email verified! Welcome, ${data.user.first_name}! 🎉`, 'Your account is ready. Redirecting...');
+          setTimeout(() => { window.location.href = 'profile.html'; }, 2000);
+        } else {
+          showMsg('verifyMsg', data.message, 'error');
+        }
+      } catch { showMsg('verifyMsg', 'Connection error. Please try again.', 'error'); }
+      finally { setBtnLoading('verifyBtn', false, '<i class="fas fa-circle-check"></i> Verify Email'); }
+    });
+
+    // ── RESEND CODE ──
+    async function resendCode() {
+      if (!pendingUserId) return;
+      const btn = document.getElementById('resendBtn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      try {
+        const data = await apiFetch('auth.php?action=resend_verification', { user_id: pendingUserId });
+        showMsg('verifyMsg', data.message, data.success ? 'success' : 'error');
+      } catch { showMsg('verifyMsg', 'Failed to resend. Try again.', 'error'); }
+      finally {
+        setTimeout(() => { btn.disabled = false; btn.textContent = 'Resend'; }, 30000);
+      }
+    }
+
+    // ── FORGOT PASSWORD ──
+    document.getElementById('forgotForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('forgotEmail').value.trim();
+      if (!email) { showMsg('forgotMsg', 'Please enter your email address.', 'error'); return; }
+      setBtnLoading('forgotBtn', true);
+      try {
+        const data = await apiFetch('auth.php?action=forgot_password', { email });
+        showMsg('forgotMsg', data.message, data.success ? 'success' : 'error');
+      } catch { showMsg('forgotMsg', 'Connection error. Please try again.', 'error'); }
+      finally { setBtnLoading('forgotBtn', false, '<i class="fas fa-paper-plane"></i> Send Reset Link'); }
+    });
+
+    // ── RESET PASSWORD ──
+    document.getElementById('resetForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const password = document.getElementById('resetPassword').value;
+      const confirm  = document.getElementById('resetPasswordConfirm').value;
+      if (!window.resetToken || !window.resetEmail) { showMsg('resetMsg', 'Invalid reset link.', 'error'); return; }
+      if (password !== confirm) { showMsg('resetMsg', 'Passwords do not match.', 'error'); return; }
+      if (password.length < 6)  { showMsg('resetMsg', 'Password must be at least 6 characters.', 'error'); return; }
+      setBtnLoading('resetBtn', true);
+      try {
+        const data = await apiFetch('auth.php?action=reset_password', {
+          email: window.resetEmail, token: window.resetToken, password
+        });
+        if (data.success) {
+          showMsg('resetMsg', data.message, 'success');
+          setTimeout(() => switchTab('login'), 2500);
+        } else {
+          showMsg('resetMsg', data.message, 'error');
+        }
+      } catch { showMsg('resetMsg', 'Connection error. Please try again.', 'error'); }
+      finally { setBtnLoading('resetBtn', false, '<i class="fas fa-check-circle"></i> Reset Password'); }
+    });
+
+    // ── SUCCESS PANEL ──
+    function showSuccess(title, msg) {
+      document.getElementById('successTitle').textContent = title;
+      document.getElementById('successMsg').textContent   = msg;
+      document.getElementById('signinTabs').style.display = 'none';
+      switchTab('success');
+    }
+
+    // ── Mobile menu ──
+    document.getElementById('menuToggle')?.addEventListener('click', function() {
+      document.getElementById('navbar').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

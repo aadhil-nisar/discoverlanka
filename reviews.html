@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DiscoverLanka - Traveler Reviews</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/signin.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header scrolled">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">Discover<span>Lanka</span></a>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+
+          <li class="dropdown">
+            <a href="places.html">Places <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="category.html?type=beaches">Beaches</a></li>
+              <li><a href="category.html?type=hill-country">Hill Country</a></li>
+              <li><a href="category.html?type=waterfalls">Waterfalls</a></li>
+              <li><a href="category.html?type=heritage-sites">Heritage Sites</a></li>
+              <li><a href="category.html?type=wildlife">Wildlife</a></li>
+            </ul>
+          </li>
+
+          <li><a href="itinerary-planner.html">Plan Trip</a></li>
+          <li><a href="reviews.html" class="active">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="reviews-hero">
+    <div class="reviews-hero-overlay"></div>
+    <div class="container">
+      <div class="reviews-hero-content">
+        <span class="reviews-badge">
+          <i class="fas fa-star"></i>
+          Real Traveler Experiences
+        </span>
+
+        <h1>What Travelers Say About DiscoverLanka</h1>
+        <p>
+          Read stories, ratings, and experiences from travelers who explored Sri Lanka
+          using DiscoverLanka — and share your own journey with others.
+        </p>
+
+        <div class="reviews-hero-actions">
+          <a href="#reviewFormSection" class="btn btn-dark">Write a Review</a>
+          <a href="#allReviewsSection" class="btn btn-outline-light">Browse Reviews</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Review Stats -->
+  <section class="section review-stats-section">
+    <div class="container">
+      <div class="review-stats-grid">
+        <div class="review-stat-card reveal active">
+          <div class="review-stat-icon"><i class="fas fa-star"></i></div>
+          <h3 id="averageRatingValue">4.9</h3>
+          <p>Average Traveler Rating</p>
+        </div>
+
+        <div class="review-stat-card reveal active">
+          <div class="review-stat-icon"><i class="fas fa-message"></i></div>
+          <h3 id="totalReviewCount">6</h3>
+          <p>Total Reviews Shared</p>
+        </div>
+
+        <div class="review-stat-card reveal active">
+          <div class="review-stat-icon"><i class="fas fa-earth-asia"></i></div>
+          <h3>Islandwide</h3>
+          <p>Reviews From Across Sri Lanka</p>
+        </div>
+
+        <div class="review-stat-card reveal active">
+          <div class="review-stat-icon"><i class="fas fa-heart"></i></div>
+          <h3>Trusted</h3>
+          <p>Loved by Travelers Worldwide</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Reviews -->
+  <section class="section featured-reviews-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Traveler Stories</h2>
+        <p>
+          A few of the experiences that made DiscoverLanka part of unforgettable Sri Lankan journeys
+        </p>
+      </div>
+
+      <div class="featured-reviews-grid">
+        <div class="featured-review-card reveal active">
+          <div class="featured-review-top">
+            <div class="featured-avatar">SJ</div>
+            <div>
+              <h4>Sarah Johnson</h4>
+              <span>Visited Kandy, Ella & Mirissa</span>
+            </div>
+          </div>
+          <div class="featured-stars">★★★★★</div>
+          <p>
+            “The site made it so much easier to organize my route through Sri Lanka.
+            I loved how simple it felt to explore destinations and build my trip flow.”
+          </p>
+        </div>
+
+        <div class="featured-review-card reveal active">
+          <div class="featured-review-top">
+            <div class="featured-avatar">MC</div>
+            <div>
+              <h4>Michael Chen</h4>
+              <span>Visited Sigiriya & Hill Country</span>
+            </div>
+          </div>
+          <div class="featured-stars">★★★★★</div>
+          <p>
+            “DiscoverLanka helped me discover places I would have missed. The trip felt better planned,
+            and the pages were very easy to use.”
+          </p>
+        </div>
+
+        <div class="featured-review-card reveal active">
+          <div class="featured-review-top">
+            <div class="featured-avatar">EW</div>
+            <div>
+              <h4>Emma Williams</h4>
+              <span>Visited Galle & South Coast</span>
+            </div>
+          </div>
+          <div class="featured-stars">★★★★★</div>
+          <p>
+            “Beautiful design, clear travel inspiration, and helpful planning tools.
+            It gave me confidence while planning my holiday.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form + Reviews -->
+  <section class="section traveler-reviews-main">
+    <div class="container">
+      <div class="traveler-reviews-grid">
+
+        <!-- Review Form -->
+        <div class="review-form-panel reveal active" id="reviewFormSection">
+          <div class="review-panel-header">
+            <h2>Share Your Experience</h2>
+            <p>Tell other travelers about your Sri Lanka journey.</p>
+          </div>
+
+          <form id="reviewForm" class="enhanced-review-form">
+            <div class="review-form-row">
+              <div class="review-field">
+                <label for="reviewName">Your Name</label>
+                <input type="text" id="reviewName" placeholder="Enter your name" />
+              </div>
+
+              <div class="review-field">
+                <label for="reviewDestination">Destination</label>
+                <input type="text" id="reviewDestination" placeholder="Example: Ella, Galle, Kandy" />
+              </div>
+            </div>
+
+            <div class="review-form-row">
+              <div class="review-field">
+                <label for="reviewTravelType">Travel Type</label>
+                <select id="reviewTravelType">
+                  <option value="">Select travel type</option>
+                  <option value="Solo Traveler">Solo Traveler</option>
+                  <option value="Couple Trip">Couple Trip</option>
+                  <option value="Family Vacation">Family Vacation</option>
+                  <option value="Friends Getaway">Friends Getaway</option>
+                  <option value="Adventure Trip">Adventure Trip</option>
+                </select>
+              </div>
+
+              <div class="review-field">
+                <label for="reviewVisitTime">When did you visit?</label>
+                <input type="text" id="reviewVisitTime" placeholder="Example: December 2025" />
+              </div>
+            </div>
+
+            <div class="review-field">
+              <label>Your Rating</label>
+              <div class="enhanced-star-rating" id="enhancedStarRating">
+                <i class="fa-star fa-regular" data-value="1"></i>
+                <i class="fa-star fa-regular" data-value="2"></i>
+                <i class="fa-star fa-regular" data-value="3"></i>
+                <i class="fa-star fa-regular" data-value="4"></i>
+                <i class="fa-star fa-regular" data-value="5"></i>
+              </div>
+              <p class="rating-helper" id="ratingHelperText">Click stars to rate your experience</p>
+            </div>
+
+            <div class="review-field">
+              <label for="reviewTitle">Review Title</label>
+              <input type="text" id="reviewTitle" placeholder="Example: Amazing hill country experience" />
+            </div>
+
+            <div class="review-field">
+              <label for="reviewText">Your Review</label>
+              <textarea
+                id="reviewText"
+                rows="6"
+                placeholder="Share what you loved, what was helpful, and your travel experience..."
+              ></textarea>
+            </div>
+
+            <div class="review-form-actions">
+              <button type="submit" class="btn btn-dark">
+                <i class="fas fa-paper-plane"></i>&nbsp; Submit Review
+              </button>
+            </div>
+
+            <p class="review-form-message" id="reviewFormMessage"></p>
+          </form>
+        </div>
+
+        <!-- Reviews List -->
+        <div class="review-list-panel reveal active" id="allReviewsSection">
+          <div class="review-list-topbar">
+            <div>
+              <h2>Traveler Reviews</h2>
+              <p>Browse recent experiences from DiscoverLanka users.</p>
+            </div>
+
+            <div class="review-filter-box">
+              <label for="filterRating">Filter Rating</label>
+              <select id="filterRating">
+                <option value="all">All Ratings</option>
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars & Up</option>
+                <option value="3">3 Stars & Up</option>
+                <option value="2">2 Stars & Up</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="review-list" id="reviewList"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="reviews-cta-section">
+    <div class="container reviews-cta-content">
+      <h2>Your Story Could Inspire the Next Traveler</h2>
+      <p>
+        Share your DiscoverLanka experience and help others build a better Sri Lanka trip.
+      </p>
+      <a href="#reviewFormSection" class="btn btn-light">Share Your Review</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo footer-logo">
+          <a href="index.html">Discover<span>Lanka</span></a>
+        </div>
+        <p>Your trusted companion for exploring the wonders of Sri Lanka</p>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="places.html">Destinations</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="help.html">Help Center</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Subscribe to get travel tips and exclusive offers</p>
+
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" />
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 DiscoverLanka. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
