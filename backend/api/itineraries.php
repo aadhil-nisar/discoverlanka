@@ -1,10 +1,4 @@
 <?php
-// ============================================================
-// backend/api/itineraries.php
-// GET    /api/itineraries.php          → list user's itineraries
-// POST   /api/itineraries.php          → save new itinerary
-// DELETE /api/itineraries.php?id=X     → delete itinerary
-// ============================================================
 
 require_once __DIR__ . '/../middleware/helpers.php';
 
