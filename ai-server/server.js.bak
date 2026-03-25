@@ -1,9 +1,3 @@
-// ============================================================
-// ai-server/server.js  — Node.js AI Trip Planner Server
-// Run: node server.js
-// Requires: npm install express cors node-fetch dotenv
-// ============================================================
-
 require('dotenv').config();
 const express = require('express');
 const cors    = require('cors');
