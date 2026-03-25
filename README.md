@@ -1,7 +1,3 @@
-Got it 👍 — here is your **FULLSTACK README in clean DOC-style (easy to copy into Word / Google Docs)**
-
----
-
 # 🌿 DiscoverLanka – Fullstack Travel Planning Platform
 
 ## 📌 Project Overview
