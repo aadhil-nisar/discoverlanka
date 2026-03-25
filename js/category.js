@@ -66,7 +66,6 @@ const referenceCities = {
 
 /* ---------------------------------------
    PLACES DATA
-   Can add more places here.
 --------------------------------------- */
 const placesData = [
   /* BEACHES */
@@ -77,7 +76,7 @@ const placesData = [
     province: "Southern Province",
     lat: 6.0107,
     lng: 80.2496,
-    image: "assets/destinations/unawatuna.jpg",
+    image: "assets/destinations/Unawatuna.jpg",
     summary: "A famous crescent-shaped beach known for swimming, sunsets, and lively cafes.",
     highlights: ["Swimming-friendly bay", "Sunset views", "Restaurants and nightlife"],
     note: "Best for relaxed beach stays and short trips combined with Galle Fort.",
@@ -129,7 +128,7 @@ const placesData = [
     province: "Southern Province",
     lat: 5.9730,
     lng: 80.4292,
-    image: "assets/destinations/weligama.jpg",
+    image: "assets/destinations/weligama.JPG",
     summary: "A long bay especially popular with beginner surfers and laid-back seaside stays.",
     highlights: ["Beginner surfing", "Wide beach", "Relaxed atmosphere"],
     note: "Very suitable for learning surf and short beach breaks.",
