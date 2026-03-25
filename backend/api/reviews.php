@@ -1,11 +1,4 @@
 <?php
-// ============================================================
-// backend/api/reviews.php
-// GET    /api/reviews.php            → list all approved reviews
-// GET    /api/reviews.php?my=1       → list current user's reviews
-// POST   /api/reviews.php            → submit a review
-// DELETE /api/reviews.php?id=X       → delete own review (auth)
-// ============================================================
 
 require_once __DIR__ . '/../middleware/helpers.php';
 
