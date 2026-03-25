@@ -1,7 +1,3 @@
-/* ============================================================
-   plan-trip.js — AI Trip Planner
-   ============================================================ */
-
 const aiTripPlannerForm = document.getElementById('aiTripPlannerForm');
 const resetAiTripBtn = document.getElementById('resetAiTripBtn');
 const aiPlannerStatus = document.getElementById('aiPlannerStatus');
