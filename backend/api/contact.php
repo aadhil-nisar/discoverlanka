@@ -1,8 +1,4 @@
 <?php
-// ============================================================
-// backend/api/contact.php
-// POST /api/contact.php  → save contact message + send emails
-// ============================================================
 
 set_exception_handler(function(Throwable $e) {
     http_response_code(500);
