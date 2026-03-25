@@ -1,9 +1,3 @@
-/* ============================================================
-   auth.js — DiscoverLanka Frontend Auth System v2
-   Handles: Login, Signup modals, Session persistence, Navbar
-   The dedicated Sign In page is signin.html
-   ============================================================ */
-
 const AUTH_API = 'backend/api';
 
 // ── STATE ─────────────────────────────────────────────────────
