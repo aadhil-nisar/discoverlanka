@@ -204,11 +204,3 @@ This project is currently in development and is created for educational and demo
 
 [https://aadhil-nisar.github.io/DiscoverLanka_Frontend/](https://aadhil-nisar.github.io/DiscoverLanka_Frontend/)
 
----
-
-If you want, I can also:
-✅ convert this into a **.docx downloadable file**
-✅ add **screenshots section (very important for marks/portfolio)**
-✅ make a **professional GitHub README with badges**
-
-Just tell me 👍
